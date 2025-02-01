@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Import your CSS file
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -10,6 +11,7 @@ const SignUp = () => {
     confirmPassword: ''
   });
 
+  const navigate = useNavigate()
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -26,11 +28,10 @@ const SignUp = () => {
         fullname: formData.firstName,
         email: formData.email,
         password: formData.password
-      }).then((res) => {
-        console.log(res)
-      }).catch((res) => {
-        console.log(res)
-      });
+      })
+      if(response.status == 200){
+        navigate("/signin")
+      }
       console.log("Data received:", response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -3,22 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css'; // Ensure you import the CSS file
 import Header from './header';
 import '../App.css';
-
+import { useEffect , useState } from 'react';
 
 // Ensure you import the CSS file
 
 const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+      // Check if the user is logged in based on the presence of the access token
+      useEffect(() => {
+          const token = localStorage.getItem('jwtToken');
+          if (token) {
+              setIsLoggedIn(true);  // User is logged in
+          } else {
+              setIsLoggedIn(false);  // User is not logged in
+          }
+      }, []);  
   const navigate = useNavigate();
   const handleStartPractice = () => {
-    navigate('/interview-details'); // Navigate to Interview Details page
+    if(isLoggedIn)
+    navigate('/interview-details');
+    else 
+    navigate('/signin')// Navigate to Interview Details page
   };
-  const handlesignup = () => {
-    navigate('/Signup');
-  };
+  // const handlesignup = () => {
+  //   navigate('/Signup');
+  // };
 
-  const handlesignin = () => {
-    navigate('/Signin');
-  };
+  // const handlesignin = () => {
+  //   navigate('/Signin');
+  // };
 
   return (
     <div className="prepai-container">
