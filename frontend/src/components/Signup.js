@@ -26,7 +26,7 @@ const SignUp = () => {
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h2 className="signup_word">Sign Up</h2>
       <button className="google-btn">LOGIN WITH GOOGLE</button>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
