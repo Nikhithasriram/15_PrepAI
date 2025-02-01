@@ -18,6 +18,22 @@ const SignUp = () => {
     });
   };
 
+  
+  const signup = async () => {
+    try {
+        const response = await axios.post("http://localhost:3000/api/users/register",{
+            firstname,email,password
+        }).then((res)=>{
+            console.log(res)
+        }).catch((res)=>{
+            console.log(res)
+        });
+        console.log("Data received:", response.data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+};
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -79,7 +95,7 @@ const SignUp = () => {
             required
           />
         </div>
-        <button type="submit" className="signup-btn">SIGN UP</button>
+        <button type="submit" className="signup-btn" onClick={signup}>SIGN UP</button>
       </form>
       <p>Already have an account? <a href="/signin">Sign In</a></p>
     </div>

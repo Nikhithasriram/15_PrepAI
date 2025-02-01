@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Signin.css';
+import axios from "axios";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -14,6 +15,21 @@ const Login = () => {
     const handleGoogleLogin = () => {
         // Add your Google login logic here
         console.log('Login with Google');
+    };
+
+    const signin = async () => {
+        try {
+            const response = await axios.post("http://localhost:3000/api/users/login",{
+                email,password
+            }).then((res)=>{
+                console.log(res)
+            }).catch((res)=>{
+                console.log(res)
+            });
+            console.log("Data received:", response.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
     return (
@@ -34,7 +50,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">SIGN IN</button>
+                <button type="submit" onClick={signin}>SIGN IN</button>
             </form>
             <button className="google-login" onClick={handleGoogleLogin}>
                 LOGIN WITH GOOGLE
