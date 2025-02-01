@@ -13,7 +13,7 @@ const InterviewDetails = () => {
     console.log('Selected Domain:', domain);
     console.log('Selected Level:', level);
     console.log('Selected Time:', time);
-    navigate('/practice-prerequisite'); // Navigate to Practice Prerequisite page
+    navigate('/practice-prerequisite', { state: { time } }); // Pass selected time
   };
 
   return (
@@ -72,6 +72,15 @@ const InterviewDetails = () => {
                 onChange={(e) => setTime(e.target.value)}
               />
               1 Hr
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="5Mins"
+                checked={time === '5Mins'}
+                onChange={(e) => setTime(e.target.value)}
+              />
+              5 Mins
             </label>
           </div>
         </div>

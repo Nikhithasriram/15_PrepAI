@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../App.css';
 
 const PracticePrerequisite = () => {
   const [browserCompatibility, setBrowserCompatibility] = useState('Checking...');
   const [microphoneStatus, setMicrophoneStatus] = useState('Checking...');
   const [voiceQuality, setVoiceQuality] = useState('Checking...');
+  const location = useLocation();
   const navigate = useNavigate();
+
+  // Get selected time from InterviewDetails page
+  const selectedTime = location.state?.time || '30Mins'; // Default to 30Mins if no time is passed
 
   // Check browser compatibility
   useEffect(() => {
@@ -41,7 +45,7 @@ const PracticePrerequisite = () => {
   };
 
   const handleStartPractice = () => {
-    navigate('/practice'); // Navigate to the practice page (you can replace this with the actual practice page route)
+    navigate('/practice', { state: { time: selectedTime } }); // Pass selected time to Practice Session
   };
 
   return (
