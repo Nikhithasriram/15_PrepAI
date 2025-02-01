@@ -1,0 +1,134 @@
+[
+    {
+        "topic": "Java",
+        "level": "easy",
+        "question": "What is the difference between primitive data types and objects in Java?",
+        "context": "Java data types, OOP fundamentals"
+    },
+    {
+        "topic": "Java",
+        "level": "easy",
+        "question": "What is the 'public static void main(String[] args)' method in Java?",
+        "context": "Java basics, main method"
+    },
+    {
+        "topic": "Java",
+        "level": "medium",
+        "question": "Explain the concept of inheritance in Java with an example.",
+        "context": "OOP concepts, inheritance"
+    },
+    {
+        "topic": "Java",
+        "level": "hard",
+        "question": "How does garbage collection work in Java?",
+        "context": "Memory management, garbage collection"
+    },
+    {
+        "topic": "Python",
+        "level": "easy",
+        "question": "What is the difference between a list and a tuple in Python?",
+        "context": "Python data structures"
+    },
+    {
+        "topic": "Python",
+        "level": "medium",
+        "question": "How do you handle exceptions in Python?",
+        "context": "Error handling, try-except blocks"
+    },
+    {
+        "topic": "Python",
+        "level": "hard",
+        "question": "What are decorators in Python, and how do you use them?",
+        "context": "Advanced Python, decorators"
+    },
+    {
+        "topic": "JavaScript",
+        "level": "easy",
+        "question": "What is the difference between 'let', 'const', and 'var' in JavaScript?",
+        "context": "JavaScript variables, ES6"
+    },
+    {
+        "topic": "JavaScript",
+        "level": "medium",
+        "question": "Explain the concept of closures in JavaScript.",
+        "context": "JavaScript functions, closures"
+    },
+    {
+        "topic": "JavaScript",
+        "level": "hard",
+        "question": "How does the event loop work in JavaScript?",
+        "context": "Asynchronous programming, event loop"
+    },
+    {
+        "topic": "Data Structures",
+        "level": "easy",
+        "question": "What is the difference between a stack and a queue?",
+        "context": "Basic data structures"
+    },
+    {
+        "topic": "Data Structures",
+        "level": "medium",
+        "question": "Explain how a binary search tree works.",
+        "context": "Tree data structures, binary search"
+    },
+    {
+        "topic": "Data Structures",
+        "level": "hard",
+        "question": "What is the time complexity of Dijkstra's algorithm?",
+        "context": "Graph algorithms, shortest path"
+    },
+    {
+        "topic": "Algorithms",
+        "level": "easy",
+        "question": "What is the difference between linear search and binary search?",
+        "context": "Search algorithms"
+    },
+    {
+        "topic": "Algorithms",
+        "level": "medium",
+        "question": "Explain the concept of dynamic programming.",
+        "context": "Advanced algorithms, optimization"
+    },
+    {
+        "topic": "Algorithms",
+        "level": "hard",
+        "question": "How does the QuickSort algorithm work?",
+        "context": "Sorting algorithms, divide and conquer"
+    },
+    {
+        "topic": "SQL",
+        "level": "easy",
+        "question": "What is the difference between 'WHERE' and 'HAVING' in SQL?",
+        "context": "SQL queries, filtering"
+    },
+    {
+        "topic": "SQL",
+        "level": "medium",
+        "question": "Explain the concept of database normalization.",
+        "context": "Database design, normalization"
+    },
+    {
+        "topic": "SQL",
+        "level": "hard",
+        "question": "What are window functions in SQL, and how are they used?",
+        "context": "Advanced SQL, window functions"
+    },
+    {
+        "topic": "System Design",
+        "level": "easy",
+        "question": "What is the difference between vertical and horizontal scaling?",
+        "context": "Scalability, system design basics"
+    },
+    {
+        "topic": "System Design",
+        "level": "medium",
+        "question": "How would you design a URL shortening service like TinyURL?",
+        "context": "System design, distributed systems"
+    },
+    {
+        "topic": "System Design",
+        "level": "hard",
+        "question": "Explain the CAP theorem and its implications for distributed systems.",
+        "context": "Distributed systems, CAP theorem"
+    }
+]
