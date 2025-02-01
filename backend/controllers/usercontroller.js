@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 import asyncHandler from "express-async-handler"
 import { User } from "../models/usermodel.js";
-
+import jwt from "jsonwebtoken"
 const loginuser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -36,7 +36,7 @@ const registeruser = asyncHandler(async (req, res) => {
     }
     console.log(fullname, email, password);
     const userAvailable = await User.findOne({ email });
-   
+
     if (userAvailable) {
         res.status(400);
         throw new Error("Email already exists");
@@ -53,9 +53,9 @@ const registeruser = asyncHandler(async (req, res) => {
 
     console.log("gveruigv");
 
-    if(user){
-        res.status(200).json({_id: user.id , email: user.email})
-    }else{
+    if (user) {
+        res.status(200).json({ _id: user.id, email: user.email })
+    } else {
         res.status(400);
         throw new Error("User data not valid");
     }
@@ -72,4 +72,4 @@ const currentuser = asyncHandler(async (req, res) => {
 
 
 // module.exports = { loginuser, registeruser, currentuser }
-export {loginuser , registeruser , currentuser }
+export { loginuser, registeruser, currentuser }

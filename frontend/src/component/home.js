@@ -2,7 +2,24 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'; // Ensure you import the CSS file
 import Header from './header';
+import '../App.css';
+
+
+// Ensure you import the CSS file
+
 const Home = () => {
+  const navigate = useNavigate();
+  const handleStartPractice = () => {
+    navigate('/interview-details'); // Navigate to Interview Details page
+  };
+  const handlesignup = () => {
+    navigate('/Signup');
+  };
+
+  const handlesignin = () => {
+    navigate('/Signin');
+  };
+
   return (
     <div className="prepai-container">
       {/* Green Header */}
@@ -19,7 +36,9 @@ const Home = () => {
       <main className="main-content">
         <h2>Prepare. Practice. Succeed.</h2>
         <p>Your perfect interview starts here!</p>
-        <button className="start-practice-btn">Start practice</button>
+        <button className="start-practice-btn" onClick={handleStartPractice}>
+          Start practice
+        </button>
       </main>
 
       {/* Benefits Section */}
