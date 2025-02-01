@@ -1,15 +1,34 @@
 import React, { useState } from 'react';
 import './Signin.css';
 import axios from "axios";
+import { useNavigate, Link } from 'react-router-dom'; // For redirecting after login
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const handleLogin = (e) => {
+    const navigate = useNavigate();
+    const handleLogin = async (e) => {
         e.preventDefault();
         // Add your login logic here
-        console.log('Login with:', email, password);
+        console.log("jiii")
+        console.log("Form submitted");
+        try {
+            console.log("Hello make this work")
+            const response = await axios.post("http://localhost:3000/api/users/login", {
+                email, password
+            })
+            if (response.status === 200) {
+                // Store the JWT token in localStorage
+                console.log(response.data.accessToken)
+                localStorage.setItem('jwtToken', response.data.accessToken);
+
+                // Redirect to dashboard or another page
+                navigate('/');
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+        // console.log('Login with:', email, password);
     };
 
     const handleGoogleLogin = () => {
@@ -17,20 +36,6 @@ const Login = () => {
         console.log('Login with Google');
     };
 
-    const signin = async () => {
-        try {
-            const response = await axios.post("http://localhost:3000/api/users/login",{
-                email,password
-            }).then((res)=>{
-                console.log(res)
-            }).catch((res)=>{
-                console.log(res)
-            });
-            console.log("Data received:", response.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
 
     return (
         <div className="login-container">
@@ -50,7 +55,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit" onClick={signin}>SIGN IN</button>
+                <button type="submit">SIGN IN</button>
             </form>
             <button className="google-login" onClick={handleGoogleLogin}>
                 LOGIN WITH GOOGLE

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Import your CSS file
-
+import axios from 'axios';
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -18,21 +18,24 @@ const SignUp = () => {
     });
   };
 
-  
+
   const signup = async () => {
     try {
-        const response = await axios.post("http://localhost:3000/api/users/register",{
-            firstname,email,password
-        }).then((res)=>{
-            console.log(res)
-        }).catch((res)=>{
-            console.log(res)
-        });
-        console.log("Data received:", response.data);
+      console.log("whyyyyy")
+      const response = await axios.post("http://localhost:3000/api/users/register", {
+        fullname: formData.firstName,
+        email: formData.email,
+        password: formData.password
+      }).then((res) => {
+        console.log(res)
+      }).catch((res) => {
+        console.log(res)
+      });
+      console.log("Data received:", response.data);
     } catch (error) {
-        console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error);
     }
-};
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

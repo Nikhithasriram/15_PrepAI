@@ -20,6 +20,20 @@
 }
 
 /* Sign In and Login Buttons */
+
+.logout {
+  padding: 8px 16px;
+  background-color: rgb(227, 240, 224);
+  color: #3e4f3d ; /* Green color */
+  border: none;
+  border-radius: 5px;
+  /* height: 100px; */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
 .sign-in-btn,
 .login-btn {
   padding: 8px 16px;
@@ -33,6 +47,7 @@
   transition: background-color 0.3s ease;
 }
 
+.logout-btn:hover,
 .sign-in-btn:hover,
 .login-btn:hover {
   background-color: rgb(227, 240, 224); /* Light gray on hover */
