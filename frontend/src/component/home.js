@@ -2,11 +2,20 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
+
+// Ensure you import the CSS file
+
 const Home = () => {
   const navigate = useNavigate();
-
   const handleStartPractice = () => {
     navigate('/interview-details'); // Navigate to Interview Details page
+  };
+  const handlesignup = () => {
+    navigate('/Signup');
+  };
+
+  const handlesignin = () => {
+    navigate('/Signin');
   };
 
   return (
@@ -15,8 +24,8 @@ const Home = () => {
       <header className="header">
         <h1 className="header-title">Prep AI</h1>
         <div className="header-buttons">
-          <button className="sign-in-btn">Sign In</button>
-          <button className="login-btn">Login</button>
+          <button className="sign-in-btn" onClick={handlesignup}>Sign Up</button>
+          <button className="login-btn" onClick={handlesignin}>Login</button>
         </div>
       </header>
 
