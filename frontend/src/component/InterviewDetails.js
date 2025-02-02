@@ -6,14 +6,41 @@ const InterviewDetails = () => {
   const [domain, setDomain] = useState('');
   const [level, setLevel] = useState('');
   const [time, setTime] = useState('');
+  const [question, setQuestion] = useState(''); // State to hold generated question
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Selected Domain:', domain);
     console.log('Selected Level:', level);
     console.log('Selected Time:', time);
-    navigate('/practice-prerequisite', { state: { time } }); // Pass selected time
+
+    // Prepare the data to send to the backend
+    const data = { domain, level, time };
+
+    try {
+      // Send the data to the Flask backend via the API endpoint
+      const response = await fetch('https://cd35-34-68-198-139.ngrok-free.app/generate_question', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Received Question:', result.question);
+        setQuestion(result.question); // Set the generated question in the state
+
+        // Optionally, navigate to a new page or display the question
+        navigate('/practice-prerequisite'); // Navigate to Practice Prerequisite page
+      } else {
+        console.error('Error generating question:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during API call:', error);
+    }
   };
 
   return (
@@ -90,6 +117,14 @@ const InterviewDetails = () => {
           Start Interview
         </button>
       </form>
+
+      {/* Display the generated question */}
+      {question && (
+        <div className="generated-question">
+          <h2>Generated Question:</h2>
+          <p>{question}</p>
+        </div>
+      )}
     </div>
   );
 };
