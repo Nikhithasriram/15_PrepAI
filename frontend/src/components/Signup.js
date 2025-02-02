@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Import your CSS file
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -10,12 +11,31 @@ const SignUp = () => {
     confirmPassword: ''
   });
 
+  const navigate = useNavigate()
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
+  };
+
+
+  const signup = async () => {
+    try {
+      console.log("whyyyyy")
+      const response = await axios.post("http://localhost:2000/api/users/register", {
+        fullname: formData.firstName,
+        email: formData.email,
+        password: formData.password
+      })
+      if(response.status == 200){
+        navigate("/signin")
+      }
+      console.log("Data received:", response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +46,7 @@ const SignUp = () => {
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h2 className="signup_word">Sign Up</h2>
       <button className="google-btn">LOGIN WITH GOOGLE</button>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -79,7 +99,7 @@ const SignUp = () => {
             required
           />
         </div>
-        <button type="submit" className="signup-btn">SIGN UP</button>
+        <button type="submit" className="signup-btn" onClick={signup}>SIGN UP</button>
       </form>
       <p>Already have an account? <a href="/signin">Sign In</a></p>
     </div>

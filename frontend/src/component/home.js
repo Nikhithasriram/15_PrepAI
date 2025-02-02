@@ -1,23 +1,58 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css'; // Ensure you import the CSS file
+import Header from './header';
+import '../App.css';
+import { useEffect , useState } from 'react';
+
+// Ensure you import the CSS file
 
 const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+      // Check if the user is logged in based on the presence of the access token
+      useEffect(() => {
+          const token = localStorage.getItem('jwtToken');
+          if (token) {
+              setIsLoggedIn(true);  // User is logged in
+          } else {
+              setIsLoggedIn(false);  // User is not logged in
+          }
+      }, []);  
+  const navigate = useNavigate();
+  const handleStartPractice = () => {
+    if(isLoggedIn)
+    navigate('/interview-details');
+    else 
+    navigate('/signin')// Navigate to Interview Details page
+  };
+  // const handlesignup = () => {
+  //   navigate('/Signup');
+  // };
+
+  // const handlesignin = () => {
+  //   navigate('/Signin');
+  // };
+
   return (
     <div className="prepai-container">
       {/* Green Header */}
-      <header className="header">
+      {/* <header className="header">
         <h1 className="header-title">Prep AI</h1>
         <div className="header-buttons">
-          <button className="sign-in-btn">Sign In</button>
-          <button className="login-btn">Login</button>
+          <button className="sign-in-btn" onClick={handlesignup}>Sign Up</button>
+          <button className="login-btn" onClick={handlesignin}>Login</button>
         </div>
-      </header>
-
+        
+      </header> */}
+      <Header/>
       {/* Main Content */}
       <main className="main-content">
         <h2>Prepare. Practice. Succeed.</h2>
         <p>Your perfect interview starts here!</p>
-        <button className="start-practice-btn">Start practice</button>
+        <button className="start-practice-btn" onClick={handleStartPractice}>
+          Start practice
+        </button>
       </main>
 
       {/* Benefits Section */}

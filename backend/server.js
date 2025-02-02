@@ -2,7 +2,9 @@ import express from "express"
 import axios from "axios"
 import dotenv from "dotenv"
 dotenv.config()
+import cors from "cors";
 const router = express.Router();
+
 
 // Configuration for different difficulty levels and time limits
 const DIFFICULTY_PARAMS = {
